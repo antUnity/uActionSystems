@@ -12,7 +12,9 @@ namespace uActionSystems
 
     public interface IQueryable
     {
-        T Query<T>(IGameDataBase data);
+        T Query<T>(IGameDataBase data) => throw new NotImplementedException();
+
+        void Mutate<T>(IGameDataBase data, T value) => throw new NotImplementedException();
     }
 
     public interface IActionContext : IGameDataBase
