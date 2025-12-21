@@ -1,6 +1,6 @@
-using uGameData;
+using antunity.GameData;
 
-namespace uActionSystems
+namespace antunity.ActionSystems
 {
     public abstract class SystemTemplate : GameDataAsset<uint> { }
 }

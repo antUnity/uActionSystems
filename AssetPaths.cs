@@ -1,4 +1,4 @@
-namespace uActionSystems {
+namespace antunity.ActionSystems {
     public static class FILE_NAME
     {
         // Rules
@@ -12,11 +12,11 @@ namespace uActionSystems {
     
     public static class MENU_PATH {
         // Rules
-        public const string RULE_HAS_DATA = "uActionSystems/HasDataRuleAsset";
-        public const string RULE_COMPARE_VALUE = "uActionSystems/CompareToValueRuleAsset";
-        public const string RULE_COMPARE_DATA = "uActionSystems/CompareToDataRuleAsset";
-        public const string RULE_COMPOSITE = "uActionSystems/CompositeRuleAsset";
-        public const string RULE_GROUP = "uActionSystems/GroupRuleAsset";
-        public const string RULE_METRIC = "uActionSystems/MetricRuleAsset";
+        public const string RULE_HAS_DATA = "antunity.ActionSystems/HasDataRuleAsset";
+        public const string RULE_COMPARE_VALUE = "antunity.ActionSystems/CompareToValueRuleAsset";
+        public const string RULE_COMPARE_DATA = "antunity.ActionSystems/CompareToDataRuleAsset";
+        public const string RULE_COMPOSITE = "antunity.ActionSystems/CompositeRuleAsset";
+        public const string RULE_GROUP = "antunity.ActionSystems/GroupRuleAsset";
+        public const string RULE_METRIC = "antunity.ActionSystems/MetricRuleAsset";
     }
 }

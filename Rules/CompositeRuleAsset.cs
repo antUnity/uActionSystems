@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace uActionSystems.Rules
+namespace antunity.ActionSystems.Rules
 {
     public enum LogicalOperation { AND, OR }
 

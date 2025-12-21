@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using uGameData;
+using antunity.GameData;
 
-namespace uActionSystems.Rules
+namespace antunity.ActionSystems.Rules
 {
     [Serializable]
     [CreateAssetMenu(fileName = FILE_NAME.RULE_GROUP, menuName = MENU_PATH.RULE_GROUP)]
