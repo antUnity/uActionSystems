@@ -2,7 +2,8 @@
     "name": "uActionSystems",
     "rootNamespace": "uActionSystems",
     "references": [
-        "GUID:63d8a17088871dfd3919ef18887f7f59"
+        "GUID:63d8a17088871dfd3919ef18887f7f59",
+        "GUID:49b49c76ee64f6b41bf28ef951cb0e50"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
