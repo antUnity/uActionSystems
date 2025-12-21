@@ -1,9 +1,9 @@
-# uActionSystems
+# antunity.ActionSystems
 
-**uActionSystems** is a data-driven framework for the Unity Engine designed to handle complex action logic, requirement validation, and rule systems. Built on the **uGameData** indexing toolkit, it decouples gameplay logic from specific implementations, allowing for highly composable and designer-friendly systems.
+**antunity.ActionSystems** is a data-driven framework for the Unity Engine designed to handle complex action logic, requirement validation, and rule systems. Built on the **antunity.GameData** indexing toolkit, it decouples gameplay logic from specific implementations, allowing for highly composable and designer-friendly systems.
 
 ### Dependencies
-This toolkit utilizes and requires [uGameData](https://github.com/antUnity/uGameData) to be installed.
+This toolkit utilizes and requires [antunity.GameData](https://github.com/antUnity/antunity.GameData) to be installed.
 
 ## Core Concepts
 
@@ -17,7 +17,7 @@ Rules are never hard-coded to look at specific components. Instead, they query a
 * **Subject**: The target of the action (e.g., a Chest, an Enemy, or an Item).
 
 ### 3. Data Querying (`IQueryable`)
-For an entity to interact with the system, it must implement the `IQueryable` interface. This allows the context to resolve values using `uGameData` assets as keys:
+For an entity to interact with the system, it must implement the `IQueryable` interface. This allows the context to resolve values using `antunity.GameData` assets as keys:
 ```csharp
 public T Query<T>(IGameDataBase data);
 ```
@@ -53,8 +53,8 @@ Implement `IQueryable` on your MonoBehaviours to allow the Action System to "rea
 
 ```csharp
 using UnityEngine;
-using uGameData;
-using uActionSystems;
+using antunity.GameData;
+using antunity.ActionSystems;
 
 public class UnitStats : MonoBehaviour, IQueryable
 {
@@ -75,8 +75,8 @@ public class UnitStats : MonoBehaviour, IQueryable
 Trigger logic by passing the Instigator and Subject into your `ActionSystem`.
 
 ```csharp
-using uActionSystems;
-using uActionSystems.Rules;
+using antunity.ActionSystems;
+using antunity.ActionSystems.Rules;
 
 public enum Actions { Attack, Unlock }
 

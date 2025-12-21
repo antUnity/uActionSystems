@@ -1,8 +1,8 @@
-using uGameData;
+using antunity.GameData;
 using UnityEngine;
-using uActionSystems.Rules;
+using antunity.ActionSystems.Rules;
 
-namespace uActionSystems
+namespace antunity.ActionSystems
 {
     public interface IActionSystemBase
     {

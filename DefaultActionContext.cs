@@ -1,8 +1,8 @@
 using System;
-using uGameData;
-using uActionSystems.Rules;
+using antunity.GameData;
+using antunity.ActionSystems.Rules;
 
-namespace uActionSystems
+namespace antunity.ActionSystems
 {
     public enum ContextSource
     {
