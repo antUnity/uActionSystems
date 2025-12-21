@@ -1,5 +1,6 @@
 using System;
 using uGameData;
+using uActionSystems.Rules;
 
 namespace uActionSystems
 {
@@ -12,6 +13,8 @@ namespace uActionSystems
 
     public interface IQueryable
     {
+        T Query<T>() => throw new NotImplementedException();
+
         T Query<T>(IGameDataBase data) => throw new NotImplementedException();
 
         void Mutate<T>(IGameDataBase data, T value) => throw new NotImplementedException();
@@ -42,6 +45,9 @@ namespace uActionSystems
 
         public TResult Resolve<TResult>(ContextSource source, IGameDataBase data)
         {
+            if (data is IRuleMetric<TResult> metric)
+                return metric.Calculate(this);
+
             IQueryable sourceTarget;
             switch (source)
             {
