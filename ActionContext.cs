@@ -31,9 +31,9 @@ namespace antunity.ActionSystems
         T Resolve<T>(ContextSource source, IGameDataBase gameData);
     }
 
-    public class DefaultActionContext<TAction> : GameData<TAction>, IActionContext where TAction : struct
+    public class ActionContext<TAction> : GameData<TAction>, IActionContext where TAction : struct
     {
-        public DefaultActionContext(TAction index) : base(index) { }
+        public ActionContext(TAction index) : base(index) { }
 
         #region IActionContext
 
