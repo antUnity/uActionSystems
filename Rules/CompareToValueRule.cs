@@ -8,10 +8,8 @@ namespace antunity.GameSystems.Rules
 
     [Serializable]
     [GameDataDrawer(GameDataLayout.Horizontal)]
-    public struct CompareToValueStruct : IRule
+    public struct CompareToValueStruct : IRule, IUseGameDataDrawer
     {
-        [SerializeField] private bool invert;
-
         [SerializeField] private GameDataSource source;
 
         [SerializeField] private GameDataAsset<uint> data;
@@ -19,6 +17,8 @@ namespace antunity.GameSystems.Rules
         [SerializeField] private ComparisonOperation operation;
 
         [SerializeField] private float value;
+
+        [SerializeField] private bool invert;
 
         public RuleResult Evaluate(IGameContext context)
         {

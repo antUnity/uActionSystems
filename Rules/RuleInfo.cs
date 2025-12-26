@@ -5,7 +5,6 @@ using antunity.GameData;
 namespace antunity.GameSystems.Rules
 {
     [Serializable]
-    [GameDataDrawer(GameDataLayout.Vertical)]
     public struct RuleInfo<TAction> : IRule, ICopyable<RuleInfo<TAction>> where TAction : struct
     {
         #region ICopyable

@@ -6,10 +6,8 @@ namespace antunity.GameSystems.Rules
 {
     [Serializable]
     [GameDataDrawer(GameDataLayout.Horizontal)]
-    public struct CompareToDataRuleStruct : IRule
+    public struct CompareToDataRuleStruct : IRule, IUseGameDataDrawer
     {
-        [SerializeField] private bool invert;
-
         [SerializeField] private GameDataSource source1;
 
         [SerializeField] private GameDataAsset<uint> data1;
@@ -19,6 +17,8 @@ namespace antunity.GameSystems.Rules
         [SerializeField] private GameDataSource source2;
 
         [SerializeField] private GameDataAsset<uint> data2;
+
+        [SerializeField] private bool invert;
 
         public IGameDataBase Data1 => data1;
 
