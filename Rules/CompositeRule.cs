@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace antunity.ActionSystems.Rules
+namespace antunity.GameSystems.Rules
 {
     public enum LogicalOperation { AND, OR }
 
@@ -17,7 +17,7 @@ namespace antunity.ActionSystems.Rules
 
         [SerializeField] private Rule rule2;
 
-        public override RuleResult Evaluate(IActionContext context)
+        public override RuleResult Evaluate(IGameContext context)
         {
             RuleResult result;
 

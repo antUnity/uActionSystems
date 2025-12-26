@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using antunity.GameData;
 
-namespace antunity.ActionSystems.Rules
+namespace antunity.GameSystems.Rules
 {
     [Serializable]
     [CreateAssetMenu(fileName = FILE_NAME.RULE_GROUP, menuName = MENU_PATH.RULE_GROUP)]
@@ -10,7 +10,7 @@ namespace antunity.ActionSystems.Rules
     {
         [SerializeField] private GameDataRegistry<Rule> rules;
 
-        public override RuleResult Evaluate(IActionContext context)
+        public override RuleResult Evaluate(IGameContext context)
         {
             foreach (var rule in rules)
             {

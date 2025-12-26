@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 using antunity.GameData;
 
-namespace antunity.ActionSystems.Rules
+namespace antunity.GameSystems.Rules
 {
     public interface IRuleMetric<TResult>
     {
-        TResult Calculate(IActionContext context);
+        TResult Calculate(IGameContext context);
     }
 
     [Serializable]
@@ -15,6 +15,6 @@ namespace antunity.ActionSystems.Rules
     {
         [SerializeReference, SubclassSelector] private IRuleMetric<float> metric;
 
-        public float Calculate(IActionContext context) => metric.Calculate(context);
+        public float Calculate(IGameContext context) => metric.Calculate(context);
     }
 }

@@ -1,6 +1,6 @@
 {
-    "name": "antunity.ActionSystems",
-    "rootNamespace": "antunity.ActionSystems",
+    "name": "antunity.GameSystems",
+    "rootNamespace": "antunity.GameSystems",
     "references": [
         "GUID:42cbfad8fd25557c1bae2e6058d404bb",
         "GUID:49b49c76ee64f6b41bf28ef951cb0e50"
