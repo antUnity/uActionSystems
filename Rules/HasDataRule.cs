@@ -6,13 +6,13 @@ namespace antunity.GameSystems.Rules
 {
     [Serializable]
     [GameDataDrawer(GameDataLayout.Horizontal)]
-    public struct HasDataRuleStruct : IRule
+    public struct HasDataRuleStruct : IRule, IUseGameDataDrawer
     {
-        [SerializeField] private bool invert;
-
         [SerializeField] private GameDataSource source;
 
         [SerializeField] private GameDataAsset<uint> data;
+
+        [SerializeField] private bool invert;
 
         public GameDataSource Source => source;
 
