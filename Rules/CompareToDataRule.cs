@@ -6,7 +6,7 @@ namespace antunity.ActionSystems.Rules
 {
     [Serializable]
     [GameDataDrawer(GameDataLayout.Horizontal)]
-    public struct CompareToDataRule : IRule
+    public struct CompareToDataRuleStruct : IRule
     {
         [SerializeField] private bool invert;
 
@@ -109,9 +109,9 @@ namespace antunity.ActionSystems.Rules
 
     [Serializable]
     [CreateAssetMenu(fileName = FILE_NAME.RULE_COMPARE_DATA, menuName = MENU_PATH.RULE_COMPARE_DATA)]
-    public class CompareToDataRuleAsset : RuleAsset
+    public class CompareToDataRule : Rule
     {
-        [SerializeField] private CompareToDataRule rule;
+        [SerializeField] private CompareToDataRuleStruct rule;
 
         public override RuleResult Evaluate(IActionContext context) => rule.Evaluate(context);
     }

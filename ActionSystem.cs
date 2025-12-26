@@ -19,14 +19,14 @@ namespace antunity.ActionSystems
 
         public void SetActionContext(IActionContext context);
 
-        public void SetActionRule(TAction action, RuleAsset rule);
+        public void SetActionRule(TAction action, Rule rule);
     }
 
     public abstract class ActionSystem<TAction> : MonoBehaviour, IActionSystem<TAction> where TAction : struct
     {
         private GameDataRegistry<IActionContext> actionContexts = new();
 
-        [SerializeField] private EnumDataValues<TAction, RuleAsset> rules = new();
+        [SerializeField] private EnumDataValues<TAction, Rule> rules = new();
 
         #region IActionSystemBase
 
@@ -73,7 +73,7 @@ namespace antunity.ActionSystems
 
         public void SetActionContext(IActionContext context) => actionContexts.Add(context);
 
-        public void SetActionRule(TAction action, RuleAsset rule)
+        public void SetActionRule(TAction action, Rule rule)
         {
             if (rules.ContainsIndex(action))
                 rules[action] = rule;

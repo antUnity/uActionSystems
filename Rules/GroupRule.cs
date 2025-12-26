@@ -6,9 +6,9 @@ namespace antunity.ActionSystems.Rules
 {
     [Serializable]
     [CreateAssetMenu(fileName = FILE_NAME.RULE_GROUP, menuName = MENU_PATH.RULE_GROUP)]
-    public class GroupRuleAsset : RuleAsset
+    public class GroupRule : Rule
     {
-        [SerializeField] private GameDataRegistry<RuleAsset> rules;
+        [SerializeField] private GameDataRegistry<Rule> rules;
 
         public override RuleResult Evaluate(IActionContext context)
         {
