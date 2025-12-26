@@ -8,7 +8,7 @@ namespace antunity.ActionSystems
     {
         public IQueryable Environment { get; set; }
 
-        public void Initialize(SystemTemplate template);
+        public void Initialize(ActionSystemTemplate template);
     }
 
     public interface IActionSystem<TAction> : IActionSystemBase where TAction : struct
@@ -32,7 +32,7 @@ namespace antunity.ActionSystems
 
         public IQueryable Environment { get; set; }
 
-        public abstract void Initialize(SystemTemplate template);
+        public abstract void Initialize(ActionSystemTemplate template);
 
         #endregion IActionSystemBase
 
@@ -50,7 +50,7 @@ namespace antunity.ActionSystems
 
             if (!actionContexts.TryGetData(action, out IActionContext context))
             {
-                context = new DefaultActionContext<TAction>(action);
+                context = new ActionContext<TAction>(action);
                 actionContexts.Add(context);
             }
 
