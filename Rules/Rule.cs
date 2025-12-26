@@ -1,7 +1,7 @@
 using System;
 using antunity.GameData;
 
-namespace antunity.ActionSystems.Rules
+namespace antunity.GameSystems.Rules
 {
     public enum RuleFailureCode
     {
@@ -59,12 +59,12 @@ namespace antunity.ActionSystems.Rules
 
     public interface IRule
     {
-        RuleResult Evaluate(IActionContext context);
+        RuleResult Evaluate(IGameContext context);
     }
 
     [Serializable]
     public abstract class Rule : GameDataAsset<uint>, IRule
     {
-        public abstract RuleResult Evaluate(IActionContext context);
+        public abstract RuleResult Evaluate(IGameContext context);
     }
 }

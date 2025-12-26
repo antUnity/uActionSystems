@@ -1,4 +1,4 @@
-namespace antunity.ActionSystems {
+namespace antunity.GameSystems {
     public static class FILE_NAME
     {
         // Rules
@@ -12,11 +12,11 @@ namespace antunity.ActionSystems {
     
     public static class MENU_PATH {
         // Rules
-        public const string RULE_HAS_DATA = "antunity/ActionSystems/HasDataRule";
-        public const string RULE_COMPARE_VALUE = "antunity/ActionSystems/CompareToValueRule";
-        public const string RULE_COMPARE_DATA = "antunity/ActionSystems/CompareToDataRule";
-        public const string RULE_COMPOSITE = "antunity/ActionSystems/CompositeRule";
-        public const string RULE_GROUP = "antunity/ActionSystems/GroupRule";
-        public const string RULE_METRIC = "antunity/ActionSystems/MetricRule";
+        public const string RULE_HAS_DATA = "antunity/Rules/HasDataRule";
+        public const string RULE_COMPARE_VALUE = "antunity/Rules/CompareToValueRule";
+        public const string RULE_COMPARE_DATA = "antunity/Rules/CompareToDataRule";
+        public const string RULE_COMPOSITE = "antunity/Rules/CompositeRule";
+        public const string RULE_GROUP = "antunity/Rules/GroupRule";
+        public const string RULE_METRIC = "antunity/Rules/MetricRule";
     }
 }

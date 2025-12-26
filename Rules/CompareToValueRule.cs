@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using antunity.GameData;
 
-namespace antunity.ActionSystems.Rules
+namespace antunity.GameSystems.Rules
 {
     public enum ComparisonOperation { Greater, GreaterOrEqual, Equal, LessOrEqual, Less, NotEqual }
 
@@ -12,7 +12,7 @@ namespace antunity.ActionSystems.Rules
     {
         [SerializeField] private bool invert;
 
-        [SerializeField] private ContextSource source;
+        [SerializeField] private GameDataSource source;
 
         [SerializeField] private GameDataAsset<uint> data;
 
@@ -20,7 +20,7 @@ namespace antunity.ActionSystems.Rules
 
         [SerializeField] private float value;
 
-        public RuleResult Evaluate(IActionContext context)
+        public RuleResult Evaluate(IGameContext context)
         {
             var value = context.Resolve<float>(source, data);
             bool result;
@@ -101,6 +101,6 @@ namespace antunity.ActionSystems.Rules
     {
         [SerializeField] private CompareToValueStruct rule;
 
-        public override RuleResult Evaluate(IActionContext context) => rule.Evaluate(context);
+        public override RuleResult Evaluate(IGameContext context) => rule.Evaluate(context);
     }
 }

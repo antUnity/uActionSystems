@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using antunity.GameData;
 
-namespace antunity.ActionSystems.Rules
+namespace antunity.GameSystems.Rules
 {
     [Serializable]
     [GameDataDrawer(GameDataLayout.Horizontal)]
@@ -10,13 +10,13 @@ namespace antunity.ActionSystems.Rules
     {
         [SerializeField] private bool invert;
 
-        [SerializeField] private ContextSource source1;
+        [SerializeField] private GameDataSource source1;
 
         [SerializeField] private GameDataAsset<uint> data1;
 
         [SerializeField] private ComparisonOperation operation;
 
-        [SerializeField] private ContextSource source2;
+        [SerializeField] private GameDataSource source2;
 
         [SerializeField] private GameDataAsset<uint> data2;
 
@@ -26,11 +26,11 @@ namespace antunity.ActionSystems.Rules
 
         public ComparisonOperation Operation => operation;
 
-        public ContextSource Source1 => source1;
+        public GameDataSource Source1 => source1;
 
-        public ContextSource Source2 => source2;
+        public GameDataSource Source2 => source2;
 
-        public RuleResult Evaluate(IActionContext context)
+        public RuleResult Evaluate(IGameContext context)
         {
             var value1 = context.Resolve<float>(source1, data1);
             var value2 = context.Resolve<float>(source2, data2);
@@ -113,6 +113,6 @@ namespace antunity.ActionSystems.Rules
     {
         [SerializeField] private CompareToDataRuleStruct rule;
 
-        public override RuleResult Evaluate(IActionContext context) => rule.Evaluate(context);
+        public override RuleResult Evaluate(IGameContext context) => rule.Evaluate(context);
     }
 }

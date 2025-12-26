@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using antunity.GameData;
 
-namespace antunity.ActionSystems.Rules
+namespace antunity.GameSystems.Rules
 {
     [Serializable]
     [GameDataDrawer(GameDataLayout.Vertical)]
@@ -30,7 +30,7 @@ namespace antunity.ActionSystems.Rules
 
         #region IRule
 
-        public RuleResult Evaluate(IActionContext context)
+        public RuleResult Evaluate(IGameContext context)
         {
             foreach (var rule in hasData.Values)
             {

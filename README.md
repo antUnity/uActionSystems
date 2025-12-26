@@ -10,14 +10,14 @@ This toolkit utilizes and requires [antunity.GameData](https://github.com/antUni
 ### 1. The Action System (`ActionSystem<TAction>`)
 The `ActionSystem` is the central hub for managing gameplay logic. It maps specific actions—defined by a generic enum (`TAction`)—to `RuleAssets`. This allows you to change the requirements for an action (e.g., "Can I cast this spell?") directly in the Inspector without modifying C# code.
 
-### 2. The Action Context (`IActionContext`)
-Rules are never hard-coded to look at specific components. Instead, they query an `IActionContext`. This context tracks three potential sources of data for any given action:
+### 2. The Action Context (`IGameContext`)
+Rules are never hard-coded to look at specific components. Instead, they query an `IGameContext`. This context tracks three potential sources of data for any given action:
 * **Environment**: The global system or manager state.
 * **Instigator**: The entity performing the action (e.g., a Player or Unit).
 * **Subject**: The target of the action (e.g., a Chest, an Enemy, or an Item).
 
-### 3. Data Querying (`IQueryable`)
-For an entity to interact with the system, it must implement the `IQueryable` interface. This allows the context to resolve values using `antunity.GameData` assets as keys:
+### 3. Data Querying (`IGameDataProvider`)
+For an entity to interact with the system, it must implement the `IGameDataProvider` interface. This allows the context to resolve values using `antunity.GameData` assets as keys:
 ```csharp
 public T Query<T>(IGameDataBase data);
 ```
@@ -47,7 +47,7 @@ These rules can be created as scriptable objects (`RuleAssets`) or serialized wi
 ## Implementation Example
 
 ### 1. Defining a Data-Driven Entity
-Implement `IQueryable` on your MonoBehaviours to allow the Action System to "read" your entity's stats.
+Implement `IGameDataProvider` on your MonoBehaviours to allow the Action System to "read" your entity's stats.
 
 
 
@@ -56,7 +56,7 @@ using UnityEngine;
 using antunity.GameData;
 using antunity.ActionSystems;
 
-public class UnitStats : MonoBehaviour, IQueryable
+public class UnitStats : MonoBehaviour, IGameDataProvider
 {
     [SerializeField] private GameDataValues<StatAsset, float> stats;
 
@@ -109,4 +109,4 @@ RuleResult combined = ruleA.Evaluate(context) && ruleB.Evaluate(context);
 ```
 
 ### Decoupled Logic
-Since `RuleAsset` is a ScriptableObject, you can create a "CanMove" rule once and apply it to Players, NPCs, and AI alike. As long as they implement `IQueryable`, the rules will work seamlessly.
+Since `RuleAsset` is a ScriptableObject, you can create a "CanMove" rule once and apply it to Players, NPCs, and AI alike. As long as they implement `IGameDataProvider`, the rules will work seamlessly.
