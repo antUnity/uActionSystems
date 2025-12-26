@@ -6,15 +6,16 @@ namespace antunity.ActionSystems.Rules
     public enum LogicalOperation { AND, OR }
 
     [Serializable]
-    public class CompositeRuleAsset : RuleAsset
+    [CreateAssetMenu(fileName = FILE_NAME.RULE_COMPOSITE, menuName = MENU_PATH.RULE_COMPOSITE)]
+    public class CompositeRule : Rule
     {
         [SerializeField] private bool invert;
 
-        [SerializeField] private RuleAsset rule1;
+        [SerializeField] private Rule rule1;
 
         [SerializeField] private LogicalOperation operation;
 
-        [SerializeField] private RuleAsset rule2;
+        [SerializeField] private Rule rule2;
 
         public override RuleResult Evaluate(IActionContext context)
         {
