@@ -1,25 +1,27 @@
-# antunity.ActionSystems
+# antunity.GameSystems
 
-**antunity.ActionSystems** is a data-driven framework for the Unity Engine designed to handle complex action logic, requirement validation, and rule systems. Built on the **antunity.GameData** indexing toolkit, it decouples gameplay logic from specific implementations, allowing for highly composable and designer-friendly systems.
+**antunity.GameSystems** is a data-driven framework for the Unity Engine designed to handle complex action logic, requirement validation, and rule systems. Built on the **antunity.GameData** toolkit, it decouples gameplay logic from specific implementations, allowing for highly composable and designer-friendly systems.
 
 ### Dependencies
-This toolkit utilizes and requires [antunity.GameData](https://github.com/antUnity/antunity.GameData) to be installed.
+This toolkit utilizes and requires [antunity.GameData](https://github.com/antUnity/GameData) to be installed.
 
 ## Core Concepts
 
-### 1. The Action System (`ActionSystem<TAction>`)
-The `ActionSystem` is the central hub for managing gameplay logic. It maps specific actions—defined by a generic enum (`TAction`)—to `RuleAssets`. This allows you to change the requirements for an action (e.g., "Can I cast this spell?") directly in the Inspector without modifying C# code.
+### 1. The Action System (`GameSystem<TAction>`)
+The `GameSystem` is the central hub for managing gameplay logic. It maps specific actions—defined by a generic enum (`TAction`)—to `Rules`. This allows you to change the requirements for an action (e.g., "Can I cast this spell?") directly in the Inspector without modifying C# code.
 
 ### 2. The Action Context (`IGameContext`)
-Rules are never hard-coded to look at specific components. Instead, they query an `IGameContext`. This context tracks three potential sources of data for any given action:
+Rules query an `IGameContext` for game data. The built-in context tracks three potential sources of data for any given action:
 * **Environment**: The global system or manager state.
 * **Instigator**: The entity performing the action (e.g., a Player or Unit).
 * **Subject**: The target of the action (e.g., a Chest, an Enemy, or an Item).
 
 ### 3. Data Querying (`IGameDataProvider`)
-For an entity to interact with the system, it must implement the `IGameDataProvider` interface. This allows the context to resolve values using `antunity.GameData` assets as keys:
+In order for a game system to interact with an entity, the entity must implement the `IGameDataProvider` interface. This allows the context to resolve values using `antunity.GameData` assets as keys:
 ```csharp
+public T Query<T>();
 public T Query<T>(IGameDataBase data);
+public void Mutate<T>(IGameDataBase data, T value);
 ```
 
 ### 4. Rich Rule Results (`RuleResult`)
@@ -32,7 +34,7 @@ The `RuleResult` struct provides detailed feedback beyond a simple boolean:
 
 ## Rule Types
 
-The toolkit includes several built-in `RuleAsset` types (ScriptableObjects) that can be combined:
+The toolkit includes several built-in `Rule` types (ScriptableObjects) that can be combined:
 
 * **CompareToValue**: Compares a context value against a constant (e.g., `Gold >= 100`).
 * **CompareToData**: Compares two values within the context (e.g., `Strength > TargetDefense`).
@@ -40,7 +42,7 @@ The toolkit includes several built-in `RuleAsset` types (ScriptableObjects) that
 * **CompositeRule**: Combines rules using **AND** / **OR** logic.
 * **GroupRule**: A registry of rules where success is returned if *all* rules in the group pass.
 
-These rules can be created as scriptable objects (`RuleAssets`) or serialized within another scriptable object.
+These rules can be created as scriptable objects (`Rules`) or serialized within another scriptable object.
 
 ---
 
@@ -54,7 +56,7 @@ Implement `IGameDataProvider` on your MonoBehaviours to allow the Action System 
 ```csharp
 using UnityEngine;
 using antunity.GameData;
-using antunity.ActionSystems;
+using antunity.GameSystems;
 
 public class UnitStats : MonoBehaviour, IGameDataProvider
 {
@@ -72,11 +74,11 @@ public class UnitStats : MonoBehaviour, IGameDataProvider
 ```
 
 ### 2. Evaluating an Action
-Trigger logic by passing the Instigator and Subject into your `ActionSystem`.
+Trigger logic by passing the Instigator and Subject into your `GameSystem`.
 
 ```csharp
-using antunity.ActionSystems;
-using antunity.ActionSystems.Rules;
+using antunity.GameSystems;
+using antunity.GameSystems.Rules;
 
 public enum Actions { Attack, Unlock }
 
@@ -91,7 +93,7 @@ public void OnInteract(Unit player, Chest target)
     }
     else
     {
-        // Provide specific feedback to the player using the rich result data
+        // Provide specific feedback to the player based on the result data
         Debug.Log($"Failed: {result.FailureCode} on {result.RequiredData.GetIndex()}");
     }
 }
@@ -109,4 +111,4 @@ RuleResult combined = ruleA.Evaluate(context) && ruleB.Evaluate(context);
 ```
 
 ### Decoupled Logic
-Since `RuleAsset` is a ScriptableObject, you can create a "CanMove" rule once and apply it to Players, NPCs, and AI alike. As long as they implement `IGameDataProvider`, the rules will work seamlessly.
+Since `Rule` is a ScriptableObject, you can create a "CanMove" rule once and apply it universally to your game, or create different CanMove rules for different scenarios. This allows designers to work in the editor without any coding.
