@@ -10,12 +10,16 @@ namespace antunity.GameSystems.Rules
     [GameDataDrawer(GameDataLayout.Horizontal)]
     public struct CompositeRuleStruct : IRule, IUseGameDataDrawer
     {
+        [Tooltip("The first rule to evaluate")]
         [SerializeField] private Rule rule1;
 
+        [Tooltip("The logical operation to perform")]
         [SerializeField] private LogicalOperation operation;
 
+        [Tooltip("The second rule to evaluate")]
         [SerializeField] private Rule rule2;
 
+        [Tooltip("Enable to invert the result of the comparison")]
         [SerializeField] private bool invert;
 
         public RuleResult Evaluate(IGameContext context)

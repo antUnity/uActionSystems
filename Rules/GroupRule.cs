@@ -8,6 +8,7 @@ namespace antunity.GameSystems.Rules
     [CreateAssetMenu(fileName = FILE_NAME.RULE_GROUP, menuName = MENU_PATH.RULE_GROUP)]
     public class GroupRule : Rule
     {
+        [Tooltip("The rules to evaluate")]
         [SerializeField] private GameDataRegistry<Rule> rules;
 
         public override RuleResult Evaluate(IGameContext context)

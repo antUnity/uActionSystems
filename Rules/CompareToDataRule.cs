@@ -8,16 +8,22 @@ namespace antunity.GameSystems.Rules
     [GameDataDrawer(GameDataLayout.Horizontal)]
     public struct CompareToDataRuleStruct : IRule, IUseGameDataDrawer
     {
+        [Tooltip("The source for the first data to compare")]
         [SerializeField] private GameDataSource source1;
 
+        [Tooltip("The first data to compare")]
         [SerializeField] private GameDataAsset<uint> data1;
 
+        [Tooltip("The comparison operation to perform")]
         [SerializeField] private ComparisonOperation operation;
 
+        [Tooltip("The source for the second data to compare")]
         [SerializeField] private GameDataSource source2;
 
+        [Tooltip("The second data to compare")]
         [SerializeField] private GameDataAsset<uint> data2;
 
+        [Tooltip("Enable to invert the result of the comparison")]
         [SerializeField] private bool invert;
 
         public IGameDataBase Data1 => data1;

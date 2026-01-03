@@ -13,6 +13,7 @@ namespace antunity.GameSystems.Rules
     [CreateAssetMenu(fileName = FILE_NAME.RULE_METRIC, menuName = MENU_PATH.RULE_METRIC)]
     public class RuleMetric : GameDataAsset<uint>, IRuleMetric<float>   
     {
+        [Tooltip("A reference to a metric type that implements IRuleMetric<float>")]
         [SerializeReference, SubclassSelector] private IRuleMetric<float> metric;
 
         public float Calculate(IGameContext context) => metric.Calculate(context);
