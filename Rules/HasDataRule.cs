@@ -8,10 +8,13 @@ namespace antunity.GameSystems.Rules
     [GameDataDrawer(GameDataLayout.Horizontal)]
     public struct HasDataRuleStruct : IRule, IUseGameDataDrawer
     {
+        [Tooltip("The source for the data to check")]
         [SerializeField] private GameDataSource source;
 
+        [Tooltip("The data to check")]
         [SerializeField] private GameDataAsset<uint> data;
 
+        [Tooltip("Enable to invert the result of the comparison")]
         [SerializeField] private bool invert;
 
         public GameDataSource Source => source;

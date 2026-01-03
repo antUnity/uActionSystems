@@ -7,7 +7,7 @@ namespace antunity.GameSystems {
         public const string RULE_COMPARE_DATA = "NewCompareToDataRule";
         public const string RULE_COMPOSITE = "NewCompositeRule";
         public const string RULE_GROUP = "NewGroupRule";
-        public const string RULE_METRIC = "NewMetricRule";
+        public const string RULE_METRIC = "NewRuleMetric";
     }
     
     public static class MENU_PATH {
