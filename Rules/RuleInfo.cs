@@ -23,7 +23,7 @@ namespace antunity.GameSystems.Rules
 
         [SerializeField] private EnumDataValues<TAction, HasDataRuleStruct> hasData;
 
-        [SerializeField] private EnumDataValues<TAction, CompareToValueStruct> compareToValue;
+        [SerializeField] private EnumDataValues<TAction, CompareToValueRuleStruct> compareToValue;
 
         [SerializeField] private EnumDataValues<TAction, CompareToDataRuleStruct> compareToData;
 
