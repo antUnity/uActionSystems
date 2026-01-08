@@ -5,6 +5,23 @@ using antunity.GameData;
 namespace antunity.GameSystems.Rules
 {
     [Serializable]
+    [GameDataDrawer(GameDataLayout.Horizontal)]
+    public struct RuleValues
+    {
+        [SerializeField] private HasDataRuleStruct hasData;
+
+        [SerializeField] private CompareToValueRuleStruct compareToValue;
+
+        [SerializeField] private CompareToDataRuleStruct compareToData;
+
+        public HasDataRuleStruct HasData => hasData;
+
+        public CompareToValueRuleStruct CompareToValue => compareToValue;
+
+        public CompareToDataRuleStruct CompareToData => compareToData;
+    }
+
+    [Serializable]
     public struct RuleInfo<TAction> : IRule, ICopyable<RuleInfo<TAction>> where TAction : struct
     {
         #region ICopyable
@@ -13,41 +30,29 @@ namespace antunity.GameSystems.Rules
         {
             return new RuleInfo<TAction>
             {
-                hasData = hasData.Copy(),
-                compareToValue = compareToValue.Copy(),
-                compareToData = compareToData.Copy()
+                rules = rules.Copy()
             };
         }
 
         #endregion ICopyable
 
-        [SerializeField] private EnumDataValues<TAction, HasDataRuleStruct> hasData;
-
-        [SerializeField] private EnumDataValues<TAction, CompareToValueRuleStruct> compareToValue;
-
-        [SerializeField] private EnumDataValues<TAction, CompareToDataRuleStruct> compareToData;
+        [SerializeField] private EnumDataValues<TAction, RuleValues> rules;
 
         #region IRule
 
         public RuleResult Evaluate(IGameContext context)
         {
-            foreach (var rule in hasData.Values)
+            foreach (var rule in rules.Values)
             {
-                var result = rule.Evaluate(context);
+                var result = rule.HasData.Evaluate(context);
                 if (!result.IsSuccess)
                     return result;
-            }
 
-            foreach (var rule in compareToValue.Values)
-            {
-                var result = rule.Evaluate(context);
+                result = rule.CompareToValue.Evaluate(context);
                 if (!result.IsSuccess)
                     return result;
-            }
-
-            foreach (var rule in compareToData.Values)
-            {
-                var result = rule.Evaluate(context);
+                
+                result = rule.CompareToData.Evaluate(context);
                 if (!result.IsSuccess)
                     return result;
             }
